@@ -144,6 +144,7 @@ def parse_args():
 	parser.add_argument('filename', help="the image to fill the holes")
 	args = parser.parse_args()
 
+	global empty_config
 	if args.use_alpha is not None:
 		empty_config = (True, int(args.use_alpha))
 	elif args.use_rgb is not None:
@@ -153,10 +154,11 @@ def parse_args():
 			empty_config = (True, int(input("Enter alpha value for empty cells (probably 0)")))
 		else:
 			empty_config = (False, (
-				int(input("Enter read value")),
+				int(input("Enter red value")),
 				int(input("Enter green value")),
 				int(input("Enter blue value"))
 			))
+	global file_name
 	file_name = args.filename
 
 	if args.chunk_size is not None:
